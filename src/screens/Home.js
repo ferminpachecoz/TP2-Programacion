@@ -1,11 +1,14 @@
 import React from 'react'
-import { StyleSheet, Text, View, FlatList, TextInput } from 'react-native';
-import database from "../database"
+import { StyleSheet, Text, View, FlatList, TextInput, TouchableOpacity } from 'react-native';
+import database from "../../database"
 import Post from '../components/Post';
 
-export default function Home() {
+export default function Home( {navigation} ) {
   return (
     <View style={styles.container}>
+      <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+        <Text style={styles.buttonText}>botón de prueba: ir a register</Text>
+      </TouchableOpacity>
       <View style={styles.wrapper}>
         <TextInput 
           style={styles.input}

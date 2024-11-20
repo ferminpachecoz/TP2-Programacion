@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import { FlatList, Text, View } from 'react-native-web';
-import database from "../database"
+import database from "../../database"
 import Post from '../components/Post';
 
 export default function MiPerfil() {
