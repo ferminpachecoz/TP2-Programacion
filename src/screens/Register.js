@@ -23,8 +23,6 @@ class Register extends Component {
       auth.createUserWithEmailAndPassword(email, pass)
         .then((res) => {
           const user = res.user;
-
-
           db.collection("users")
             .add({
               email: user.email,
