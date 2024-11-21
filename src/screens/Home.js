@@ -7,7 +7,7 @@ export default function Home( {navigation} ) {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.navigate('Register')}>
-        <Text style={styles.buttonText}>botón de prueba: ir a register</Text>
+        <Text style={styles.buttonText}>botón de prueba: ir a register (si no anda es porque estas logeado) </Text>
       </TouchableOpacity>
       <View style={styles.wrapper}>
         <TextInput 
