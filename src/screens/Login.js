@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import { TouchableOpacity } from 'react-native';
 import { Text, TextInput, View, StyleSheet, ActivityIndicator } from 'react-native-web'
 import { auth } from '../firebase/config'
@@ -15,12 +15,12 @@ class Login extends Component {
   }
 
   componentDidMount() {
-    auth.onAuthStateChanged( user => {
+    auth.onAuthStateChanged(user => {
       console.log(user);
       if (user) {
         this.props.navigation.navigate('HomeMenu')
       } else {
-        this.setState({loading: false})
+        this.setState({ loading: false })
       }
     })
   }
@@ -43,51 +43,52 @@ class Login extends Component {
   render() {
     if (this.state.loading) {
       return (
-      <View style={styles.container}>
-        <ActivityIndicator size="large" color="#0000ff" />
-      </View>
+        <View style={styles.container}>
+          <ActivityIndicator size="large" color="#0000ff" />
+        </View>
       )
     } else {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.title}>Pagina Login</Text>
+      return (
+        <View style={styles.container}>
+          <Text style={styles.title}>Pagina Login</Text>
 
-        {this.state.error && <Text style={styles.error}>Hay un error en el Login</Text>}
+          {this.state.error && <Text style={styles.error}>Hay un error en el Login</Text>}
 
-        <TextInput
-          style={styles.input}
-          keyboardType='email-address'
-          placeholder='Introducí tu correo electrónico'
-          onChangeText={text => this.setState({ email: text })}
-          value={this.state.email}
-        />
+          <TextInput
+            style={styles.input}
+            keyboardType='email-address'
+            placeholder='Introducí tu correo electrónico'
+            onChangeText={text => this.setState({ email: text })}
+            value={this.state.email}
+          />
 
-        <TextInput
-          style={styles.input}
-          keyboardType='default'
-          placeholder='Escribí tu contraseña'
-          onChangeText={text => this.setState({ pass: text })}
-          value={this.state.pass}
-        />
+          <TextInput
+            style={styles.input}
+            keyboardType='default'
+            secureTextEntry
+            placeholder='Escribí tu contraseña'
+            onChangeText={text => this.setState({ pass: text })}
+            value={this.state.pass}
+          />
 
-        <TouchableOpacity style={styles.btn} onPress={() => this.onSubmit(this.state.email, this.state.pass)}>
-          <Text style={styles.btnText} >Login</Text>
-        </TouchableOpacity>
+          <TouchableOpacity style={styles.btn} onPress={() => this.onSubmit(this.state.email, this.state.pass)}>
+            <Text style={styles.btnText} >Login</Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity style={styles.btn} onPress={() => this.props.navigation.navigate('Register')}>
-          <Text style={styles.btnText} >Registrate acá</Text>
-        </TouchableOpacity>
-      </View>
-    );
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('Register')}>
+            <Text style={styles.link} >Registrate acá</Text>
+          </TouchableOpacity>
+        </View>
+      );
+    }
   }
-}
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1, justifyContent: "center", padding: 20 },
   title: { fontSize: 24, fontWeight: "bold", marginBottom: 20, textAlign: "center" },
   input: { borderWidth: 1, padding: 10, marginBottom: 15, borderRadius: 5 },
-  btn: {backgroundColor: "#007BFF", padding: 10, borderRadius: 5, alignItems: "center", marginBottom: 20, },
+  btn: { backgroundColor: "#007BFF", padding: 10, borderRadius: 5, alignItems: "center", marginBottom: 20, },
   btnText: { color: "#FFF", fontSize: 16 },
   error: { color: "red", marginBottom: 10, textAlign: "center" },
   link: { color: "blue", textAlign: "center" },

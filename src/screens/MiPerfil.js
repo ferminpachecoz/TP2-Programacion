@@ -85,7 +85,10 @@ class MiPerfil extends Component {
         <FlatList
           style={styles.flatlist}
           data={this.state.userPosts}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item) => {
+            console.log("Post ID:", item.id); 
+            return item.id;
+          }}
           renderItem={({ item }) => (
             <Post
               data={item.data}

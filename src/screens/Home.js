@@ -1,4 +1,5 @@
 import React from 'react'
+import firebase from 'firebase';
 import { StyleSheet, Text, View, FlatList, TextInput, TouchableOpacity } from 'react-native';
 import database from "../../database"
 import Post from '../components/Post';
@@ -20,7 +21,12 @@ export default function Home( {navigation} ) {
         style={styles.flatlist}
         data={database}
         keyExtractor={item => item.id.toString()}
-        renderItem={({item})=> <Post data={item} type={"default"} />}
+        renderItem={
+          ({item}) => <Post 
+        data={item} 
+        postId={item.id}
+        type= "likes"
+         />}
       />
     </View>
   )
