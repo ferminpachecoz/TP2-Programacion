@@ -33,7 +33,6 @@ class Home extends Component{
     
   }
   handleChange(text){
-    console.log(text);
     let pos = this.state.posteos;
     if(text){
       let ax = pos.filter(item=>{
