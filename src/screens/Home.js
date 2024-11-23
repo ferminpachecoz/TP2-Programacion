@@ -1,35 +1,91 @@
-import React from 'react'
-import firebase from 'firebase';
+import React, {Component} from 'react'
 import { StyleSheet, Text, View, FlatList, TextInput, TouchableOpacity } from 'react-native';
 import database from "../../database"
 import Post from '../components/Post';
+import { auth, db } from "../firebase/config";
 
-export default function Home( {navigation} ) {
-  return (
-    <View style={styles.container}>
-      <TouchableOpacity onPress={() => navigation.navigate('Register')}>
-        <Text style={styles.buttonText}>botón de prueba: ir a register (si no anda es porque estas logeado) </Text>
-      </TouchableOpacity>
-      <View style={styles.wrapper}>
-        <TextInput 
-          style={styles.input}
-          keyboardType='default'
-          placeholder='Buscar posteo...'
+class Home extends Component{
+  constructor(props){
+    super(props);
+    this.state={
+      posteos: []
+    }
+  }
+  componentDidMount() {
+    const user = auth.currentUser;
+    if (!user) {
+      this.props.navigation.navigate("Login");
+    }
+    db.collection("posts").onSnapshot(
+      docs=>{
+        let posts = []
+        docs.forEach(doc=>{
+          posts.push({
+            id: doc.id,
+            data: doc.data()
+          })
+        })
+        this.setState({
+          posteos: posts
+        })
+      }
+    )
+    
+  }
+  handleChange(text){
+    console.log(text);
+    let pos = this.state.posteos;
+    if(text){
+      let ax = pos.filter(item=>{
+        return item.data.title.toLowerCase().includes(text.toLowerCase()) || item.data.content.toLowerCase().includes(text.toLowerCase())
+      })
+      this.setState({
+        posteos: ax
+      })
+    }else{
+      db.collection("posts").onSnapshot(
+        docs=>{
+          let posts = []
+          docs.forEach(doc=>{
+            posts.push({
+              id: doc.id,
+              data: doc.data()
+            })
+          })
+          this.setState({
+            posteos: posts
+          })
+        }
+      )
+    }
+  }
+  render(){
+    console.log(this.state.posteos);
+    
+    return (
+      <View style={styles.container}>
+        <View style={styles.wrapper}>
+          <TextInput 
+            style={styles.input}
+            keyboardType='default'
+            placeholder='Buscar posteo...'
+            onChangeText={text=>this.handleChange(text)}
+          />
+        </View>
+        <FlatList 
+          style={styles.flatlist}
+          data={this.state.posteos}
+          keyExtractor={item => item.id.toString()}
+          renderItem={
+            ({item}) => <Post 
+          data={item.data} 
+          postId={item.id}
+          type= "likes"
+           />}
         />
       </View>
-      <FlatList 
-        style={styles.flatlist}
-        data={database}
-        keyExtractor={item => item.id.toString()}
-        renderItem={
-          ({item}) => <Post 
-        data={item} 
-        postId={item.id}
-        type= "likes"
-         />}
-      />
-    </View>
-  )
+    )
+  }
 }
 
 const styles = StyleSheet.create({
@@ -54,3 +110,5 @@ const styles = StyleSheet.create({
     borderRadius: 15
   }
 });
+
+export default Home
