@@ -50,13 +50,13 @@ class Post extends Component {
 
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>{data.email}</Text>
+        <Text style={styles.title}>{data.title}</Text>
         <View style={styles.wrapper}>
           <Text style={styles.text}>{data.content}</Text>
 
           {type === "delete" && (
             <TouchableOpacity style={styles.button} onPress={onDelete}>
-              <Text>Borrar</Text>
+              <Text style={styles.buttonText}>Borrar</Text>
             </TouchableOpacity>
           )}
 
@@ -72,9 +72,14 @@ class Post extends Component {
           )}
 
         </View>
-        <Text style={styles.fecha}>
-          {new Date(data.createdAt).toLocaleDateString()}
-        </Text>
+        <View style={styles.container2}>
+          <Text style={styles.fecha}>
+            {data.email}
+          </Text>
+          <Text style={styles.fecha}>
+            {new Date(data.createdAt).toLocaleDateString()}
+          </Text>
+        </View>
       </View>
     );
   }
@@ -84,32 +89,42 @@ const styles = StyleSheet.create({
   container: {
     padding: 15,
     margin: 10,
-    backgroundColor: "#ffffff",
+    /* backgroundColor: "#ffffff", */
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: "#ddd",
+    /* borderColor: "#ddd", */
+    borderColor: "#555555",
     shadowColor: "#000",
     shadowOpacity: 0.1,
     shadowRadius: 5,
     shadowOffset: { width: 0, height: 2 },
     elevation: 3,
+    backgroundColor: "#2E2E2E"
+  },
+  container2:{
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
   },
   title: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "#333",
+    /* color: "#333", */
+    color: "#E0E0E0",
     marginBottom: 8,
   },
   wrapper: {
     marginVertical: 10,
     paddingVertical: 10,
     borderTopWidth: 1,
-    borderTopColor: "#eee",
+    borderTopColor: "#555555",
   },
   text: {
     fontSize: 16,
     lineHeight: 22,
-    color: "#555",
+    /* color: "#555", */
+    color: "#E0E0E0"
   },
   button: {
     marginTop: 15,
@@ -121,14 +136,15 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 14,
-    color: "#fff",
+    /* color: "#fff", */
+    color: "#E0E0E0",
     fontWeight: "600",
   },
   fecha: {
-    fontSize: 12,
-    color: "#aaa",
+    fontSize: 14,
+    /* color: "#aaa", */
+    color: "#555555",
     marginTop: 10,
-    textAlign: "right",
   },
   likeContainer: {
     flexDirection: "row",
@@ -138,7 +154,8 @@ const styles = StyleSheet.create({
   },
   likeCount: {
     fontSize: 14,
-    color: "#555",
+    /* color: "#555", */
+    color: "#007bff"
   },
   likeButton: {
     fontSize: 14,

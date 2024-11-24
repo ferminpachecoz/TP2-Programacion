@@ -105,7 +105,7 @@ class MiPerfil extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#1C1C1C",
     padding: 20,
   },
   profileInfo: {
@@ -114,10 +114,12 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     marginVertical: 5,
+    color: "#E0E0E0"
   },
   title: {
     fontWeight: "bold",
     fontSize: 20,
+    color: "#E0E0E0"
   },
   button: {
     backgroundColor: "red",

@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: "#fff",
+    backgroundColor: "#1C1C1C",
     justifyContent: "center",
   },
   title: {
@@ -95,6 +95,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 20,
     textAlign: "center",
+    color: "#E0E0E0"
   },
   msg: {
     color: "red", 
@@ -110,11 +111,13 @@ const styles = StyleSheet.create({
   },
   input: {
     borderWidth: 1,
-    borderColor: "gray",
+    borderColor: "#555555",
     borderRadius: 10,
     padding: 10,
     marginBottom: 15,
     fontSize: 16,
+    backgroundColor: "#555555",
+    color: "#E0E0E0"
   },
   textarea: {
     height: 100,

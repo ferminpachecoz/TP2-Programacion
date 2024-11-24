@@ -93,6 +93,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'start',
+    backgroundColor: "#1C1C1C"
   },
   flatlist:{
     width: "100%",
@@ -104,9 +105,11 @@ const styles = StyleSheet.create({
   },
   input:{
     width: "100%",
-    border: "1px solid gray",
+    border: "1px solid #007bff",
     padding: 10,
-    borderRadius: 15
+    borderRadius: 15,
+    color: "#E0E0E0",
+    backgroundColor: "#555555"
   }
 });
 
