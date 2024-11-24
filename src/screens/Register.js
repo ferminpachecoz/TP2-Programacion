@@ -49,7 +49,7 @@ class Register extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>Registrarse</Text>
+        <Text style={styles.title}>Register</Text>
         {this.state.error ? <Text style={styles.error}>{this.state.error}</Text> : null}
         <TextInput
           style={styles.input}

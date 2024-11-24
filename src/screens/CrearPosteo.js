@@ -8,7 +8,7 @@ class CrearPosteo extends Component {
     this.state = {
       postContent: "",
       postTitle: "",
-      msg: "", 
+      msg: "",
       greenMsg: ""
     };
   }
@@ -32,11 +32,11 @@ class CrearPosteo extends Component {
     const user = auth.currentUser;
     db.collection("posts")
       .add({
-        title: postTitle, 
-        content: postContent, 
-        email: user.email, 
-        createdAt: Date.now(), 
-        likes: [], 
+        title: postTitle,
+        content: postContent,
+        email: user.email,
+        createdAt: Date.now(),
+        likes: [],
       })
       .then(() => {
         this.setState({
@@ -48,7 +48,7 @@ class CrearPosteo extends Component {
       })
       .catch((error) => {
         console.error("Error al crear el post:", error);
-        this.setState({ msg: "Hubo un problema al crear el post." }); 
+        this.setState({ msg: "Hubo un problema al crear el post." });
       });
   }
 
@@ -98,13 +98,13 @@ const styles = StyleSheet.create({
     color: "#E0E0E0"
   },
   msg: {
-    color: "red", 
+    color: "red",
     fontSize: 16,
     textAlign: "center",
     marginBottom: 15,
   },
   greenMsg: {
-    color: "green", 
+    color: "green",
     fontSize: 16,
     textAlign: "center",
     marginBottom: 15,

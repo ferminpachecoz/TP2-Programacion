@@ -9,8 +9,8 @@ class MiPerfil extends Component {
     this.state = {
       username: "",
       email: "",
-      userPosts: [], 
-      msg: "", 
+      userPosts: [],
+      msg: "",
     };
   }
 
@@ -22,13 +22,13 @@ class MiPerfil extends Component {
     } else {
 
       db.collection("users")
-        .where("email", "==", user.email) 
+        .where("email", "==", user.email)
         .onSnapshot((docs) => {
           let userData = [];
           docs.forEach((doc) => {
             userData.push(doc.data());
-            this.setState({ email: userData[0].email})
-            this.setState({ username: userData[0].username})
+            this.setState({ email: userData[0].email })
+            this.setState({ username: userData[0].username })
           });
         });
 
@@ -40,7 +40,7 @@ class MiPerfil extends Component {
             posts.push({
               id: doc.id,
               data: doc.data(),
-            }); 
+            });
           });
           this.setState({ userPosts: posts });
         });
@@ -74,8 +74,8 @@ class MiPerfil extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.profileInfo}>
-          <Text style={styles.title}>Usuario: {this.state.username}</Text>
-          <Text style={styles.text}>Email: {this.state.email}</Text>
+          <Text style={styles.title}>{this.state.username}</Text>
+          <Text style={styles.text}>{this.state.email}</Text>
           <Text style={styles.text}>Cantidad de posteos: {this.state.userPosts.length}</Text>
           <TouchableOpacity style={styles.button} onPress={() => this.handleLogout()}>
             <Text style={styles.buttonText}>Cerrar Sesión</Text>
@@ -86,7 +86,7 @@ class MiPerfil extends Component {
           style={styles.flatlist}
           data={this.state.userPosts}
           keyExtractor={(item) => {
-            console.log("Post ID:", item.id); 
+            console.log("Post ID:", item.id);
             return item.id;
           }}
           renderItem={({ item }) => (

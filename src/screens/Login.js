@@ -34,7 +34,7 @@ class Login extends Component {
           this.props.navigation.navigate('HomeMenu');
         })
         .catch(err => {
-          this.setState({ error: 'Fallo en el logueo' })
+          this.setState({ error: 'Error al iniciar sesión' })
           console.log(err);
         })
     }
@@ -50,7 +50,7 @@ class Login extends Component {
     } else {
       return (
         <View style={styles.container}>
-          <Text style={styles.title}>Pagina Login</Text>
+          <Text style={styles.title}>Login</Text>
 
           {this.state.error && <Text style={styles.error}>Hay un error en el Login</Text>}
 
@@ -72,11 +72,11 @@ class Login extends Component {
           />
 
           <TouchableOpacity style={styles.btn} onPress={() => this.onSubmit(this.state.email, this.state.pass)}>
-            <Text style={styles.btnText} >Login</Text>
+            <Text style={styles.btnText}>Iniciar sesión</Text>
           </TouchableOpacity>
 
           <TouchableOpacity onPress={() => this.props.navigation.navigate('Register')}>
-            <Text style={styles.link} >Registrate acá</Text>
+            <Text style={styles.link}>¿No estás registrado? Registrate aquí</Text>
           </TouchableOpacity>
         </View>
       );
@@ -93,7 +93,5 @@ const styles = StyleSheet.create({
   error: { color: "red", marginBottom: 10, textAlign: "center" },
   link: { color: "blue", textAlign: "center" },
 });
-
-
 
 export default Login;

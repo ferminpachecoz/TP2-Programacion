@@ -61,14 +61,14 @@ class Post extends Component {
           )}
 
           {type === "likes" && (
-          <View style={styles.likeContainer}>
-            <Text style={styles.likeCount}>{this.state.likes.length} likes</Text>
-            <TouchableOpacity onPress={() => this.actualizarLikes()}>
-              <Text style={styles.likeButton}>
-                {this.state.likedByUser ? "Quitar Like" : "Dar Like"}
-              </Text>
-            </TouchableOpacity>
-          </View>
+            <View style={styles.likeContainer}>
+              <Text style={styles.likeCount}>{this.state.likes.length} likes</Text>
+              <TouchableOpacity onPress={() => this.actualizarLikes()}>
+                <Text style={styles.likeButton}>
+                  {this.state.likedByUser ? "Quitar Like" : "Dar Like"}
+                </Text>
+              </TouchableOpacity>
+            </View>
           )}
 
         </View>
@@ -89,10 +89,8 @@ const styles = StyleSheet.create({
   container: {
     padding: 15,
     margin: 10,
-    /* backgroundColor: "#ffffff", */
     borderRadius: 8,
     borderWidth: 1,
-    /* borderColor: "#ddd", */
     borderColor: "#555555",
     shadowColor: "#000",
     shadowOpacity: 0.1,
@@ -101,7 +99,7 @@ const styles = StyleSheet.create({
     elevation: 3,
     backgroundColor: "#2E2E2E"
   },
-  container2:{
+  container2: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
@@ -110,7 +108,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 18,
     fontWeight: "bold",
-    /* color: "#333", */
     color: "#E0E0E0",
     marginBottom: 8,
   },
@@ -123,7 +120,6 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     lineHeight: 22,
-    /* color: "#555", */
     color: "#E0E0E0"
   },
   button: {
@@ -136,13 +132,11 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 14,
-    /* color: "#fff", */
     color: "#E0E0E0",
     fontWeight: "600",
   },
   fecha: {
     fontSize: 14,
-    /* color: "#aaa", */
     color: "#555555",
     marginTop: 10,
   },
@@ -154,7 +148,6 @@ const styles = StyleSheet.create({
   },
   likeCount: {
     fontSize: 14,
-    /* color: "#555", */
     color: "#007bff"
   },
   likeButton: {
@@ -163,7 +156,5 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 });
-
-
 
 export default Post;
