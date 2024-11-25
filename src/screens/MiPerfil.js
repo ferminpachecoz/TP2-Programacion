@@ -62,11 +62,11 @@ class MiPerfil extends Component {
       .doc(postId)
       .delete()
       .then(() => {
-        this.setState({ msg: "El post fue eliminado correctamente." });
+        this.setState({ msg: "El posteo fue eliminado correctamente." });
       })
       .catch((error) => {
-        console.error("Error al borrar el post:", error);
-        this.setState({ msg: "Hubo un problema al borrar el post." });
+        console.error("Error al borrar el posteo:", error);
+        this.setState({ msg: "Hubo un problema al borrar el posteo." });
       });
   }
 

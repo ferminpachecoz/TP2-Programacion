@@ -108,8 +108,9 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 15,
     color: "#E0E0E0",
-    backgroundColor: "#555555"
-  }
+    backgroundColor: "#555555",
+    outlineStyle: "none",
+  },
 });
 
 export default Home

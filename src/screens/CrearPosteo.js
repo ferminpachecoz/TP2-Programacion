@@ -47,8 +47,8 @@ class CrearPosteo extends Component {
         this.props.navigation.navigate("HomeMenu");
       })
       .catch((error) => {
-        console.error("Error al crear el post:", error);
-        this.setState({ msg: "Hubo un problema al crear el post." });
+        console.error("Error al crear el posteo:", error);
+        this.setState({ msg: "Hubo un problema al crear el posteo." });
       });
   }
 
@@ -117,7 +117,8 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     fontSize: 16,
     backgroundColor: "#555555",
-    color: "#E0E0E0"
+    color: "#E0E0E0",
+    outlineStyle: "none",
   },
   textarea: {
     height: 100,

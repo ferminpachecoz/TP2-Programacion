@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { db, auth } from '../firebase/config'
 import firebase from "firebase";
+import FontAwesome from "@expo/vector-icons/FontAwesome"
 
 class Post extends Component {
   constructor(props) {
@@ -53,33 +54,32 @@ class Post extends Component {
         <Text style={styles.title}>{data.title}</Text>
         <View style={styles.wrapper}>
           <Text style={styles.text}>{data.content}</Text>
-
-          {type === "delete" && (
-            <TouchableOpacity style={styles.button} onPress={onDelete}>
-              <Text style={styles.buttonText}>Borrar</Text>
-            </TouchableOpacity>
-          )}
-
-          {type === "likes" && (
-            <View style={styles.likeContainer}>
-              <Text style={styles.likeCount}>{this.state.likes.length} likes</Text>
-              <TouchableOpacity onPress={() => this.actualizarLikes()}>
-                <Text style={styles.likeButton}>
-                  {this.state.likedByUser ? "Quitar Like" : "Dar Like"}
-                </Text>
-              </TouchableOpacity>
-            </View>
-          )}
-
+          <Text style={styles.likeCount}> <FontAwesome name="heart" size={"large"} style={{ color: "#ff0000", }} /> {this.state.likes.length}</Text>
         </View>
+
         <View style={styles.container2}>
           <Text style={styles.fecha}>
-            {data.email}
+            {data.email} {new Date(data.createdAt).toLocaleDateString()}
           </Text>
-          <Text style={styles.fecha}>
-            {new Date(data.createdAt).toLocaleDateString()}
+          <Text>
+            {type === "likes" && (
+              <View style={styles.likeContainer}>
+                <TouchableOpacity onPress={() => this.actualizarLikes()}>
+                  <Text style={styles.likeButton}>
+                    {this.state.likedByUser ? <FontAwesome name="heart-o" type="regular" size={"large"} style={{ color: "#ff0000", }} /> : <FontAwesome name="heart" size={"large"} style={{ color: "#ff0000", }} />}
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            )}
           </Text>
         </View>
+
+        {type === "delete" && (
+          <TouchableOpacity onPress={onDelete} style={styles.deleteButton}>
+            <Text style={styles.buttonText}> Borrar <FontAwesome name="trash" size={"large"} style={{ color: "white", }} /> </Text>
+          </TouchableOpacity>
+        )}
+
       </View>
     );
   }
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "center"
+    alignItems: "left"
   },
   title: {
     fontSize: 18,
@@ -122,10 +122,10 @@ const styles = StyleSheet.create({
     lineHeight: 22,
     color: "#E0E0E0"
   },
-  button: {
-    marginTop: 15,
+  deleteButton: {
+    marginTop: 10,
     padding: 10,
-    backgroundColor: "#ff4d4d",
+    backgroundColor: "red",
     borderRadius: 5,
     alignItems: "center",
     justifyContent: "center",
@@ -147,8 +147,9 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   likeCount: {
-    fontSize: 14,
-    color: "#007bff"
+    marginTop: 15,
+    fontSize: 18,
+    color: "#ff4d4d"
   },
   likeButton: {
     fontSize: 14,

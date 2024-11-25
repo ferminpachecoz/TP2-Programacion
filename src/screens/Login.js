@@ -85,13 +85,43 @@ class Login extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", padding: 20 },
-  title: { fontSize: 24, fontWeight: "bold", marginBottom: 20, textAlign: "center" },
-  input: { borderWidth: 1, padding: 10, marginBottom: 15, borderRadius: 5 },
-  btn: { backgroundColor: "#007BFF", padding: 10, borderRadius: 5, alignItems: "center", marginBottom: 20, },
-  btnText: { color: "#FFF", fontSize: 16 },
-  error: { color: "red", marginBottom: 10, textAlign: "center" },
-  link: { color: "blue", textAlign: "center" },
+  container: { 
+    flex: 1, 
+    justifyContent: "center", 
+    padding: 20 
+  },
+  title: { 
+    fontSize: 24, 
+    fontWeight: "bold", 
+    marginBottom: 20, 
+    textAlign: "center" 
+  },
+  input: { 
+    borderWidth: 1, 
+    padding: 10, 
+    marginBottom: 15, 
+    borderRadius: 5,
+    outlineStyle: "none",
+  },
+  btn: { 
+    backgroundColor: "#007BFF", 
+    padding: 10, borderRadius: 5, 
+    alignItems: "center", 
+    marginBottom: 20, 
+  },
+  btnText: { 
+    color: "#FFF", 
+    fontSize: 16 
+  },
+  error: { 
+    color: "red", 
+    marginBottom: 10, 
+    textAlign: "center" 
+  },
+  link: { 
+    color: "blue", 
+    textAlign: "center" 
+  },
 });
 
 export default Login;
