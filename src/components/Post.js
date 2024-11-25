@@ -76,7 +76,7 @@ class Post extends Component {
 
         {type === "delete" && (
           <TouchableOpacity onPress={onDelete} style={styles.deleteButton}>
-            <Text style={styles.deleteButtonText}> Borrar <FontAwesome name="trash" size={"large"} style={{ color: "white", }}/> </Text>
+            <Text style={styles.deleteButtonText}>Borrar <FontAwesome name="trash" size={"large"} style={{ color: "white", }}/> </Text>
           </TouchableOpacity> 
         )}
 
