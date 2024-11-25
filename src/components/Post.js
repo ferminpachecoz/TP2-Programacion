@@ -54,19 +54,19 @@ class Post extends Component {
         <Text style={styles.title}>{data.title}</Text>
         <View style={styles.wrapper}>
           <Text style={styles.text}>{data.content}</Text>
-          <Text style={styles.likeCount}> <FontAwesome name="heart" size={"large"} style={{ color: "#ff0000", }} /> {this.state.likes.length}</Text>
+          <Text style={styles.likeCount}> <FontAwesome name="heart" size={"large"} style={{ color: "#ff4d4d", }} /> {this.state.likes.length}</Text>
         </View>
 
         <View style={styles.container2}>
           <Text style={styles.fecha}>
-            {data.email} {new Date(data.createdAt).toLocaleDateString()}
+            {data.email} - {new Date(data.createdAt).toLocaleDateString()}
           </Text>
           <Text>
             {type === "likes" && (
               <View style={styles.likeContainer}>
                 <TouchableOpacity onPress={() => this.actualizarLikes()}>
                   <Text style={styles.likeButton}>
-                    {this.state.likedByUser ? <FontAwesome name="heart-o" type="regular" size={"large"} style={{ color: "#ff0000", }} /> : <FontAwesome name="heart" size={"large"} style={{ color: "#ff0000", }} />}
+                    {this.state.likedByUser ? <FontAwesome name="heart-o" type="regular" size={30} style={{ color: "#ff4d4d", }}/> : <FontAwesome name="heart" size={30} style={{ color: "#ff4d4d", }}/>}
                   </Text>
                 </TouchableOpacity>
               </View>
@@ -76,8 +76,8 @@ class Post extends Component {
 
         {type === "delete" && (
           <TouchableOpacity onPress={onDelete} style={styles.deleteButton}>
-            <Text style={styles.buttonText}> Borrar <FontAwesome name="trash" size={"large"} style={{ color: "white", }} /> </Text>
-          </TouchableOpacity>
+            <Text style={styles.deleteButtonText}> Borrar <FontAwesome name="trash" size={"large"} style={{ color: "white", }}/> </Text>
+          </TouchableOpacity> 
         )}
 
       </View>
@@ -124,20 +124,17 @@ const styles = StyleSheet.create({
   },
   deleteButton: {
     marginTop: 10,
-    padding: 10,
-    backgroundColor: "red",
-    borderRadius: 5,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: "left",
+    justifyContent: "left",
   },
-  buttonText: {
+  deleteButtonText: {
     fontSize: 14,
-    color: "#E0E0E0",
+    color: "white",
     fontWeight: "600",
   },
   fecha: {
     fontSize: 14,
-    color: "#555555",
+    color: "gray",
     marginTop: 10,
   },
   likeContainer: {

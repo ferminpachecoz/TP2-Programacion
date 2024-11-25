@@ -76,7 +76,7 @@ class MiPerfil extends Component {
         <View style={styles.profileInfo}>
           <Text style={styles.title}>{this.state.username}</Text>
           <Text style={styles.text}>{this.state.email}</Text>
-          <Text style={styles.text}>Cantidad de posteos: {this.state.userPosts.length}</Text>
+          <Text style={styles.text}>{this.state.userPosts.length} posteos</Text>
           <TouchableOpacity style={styles.button} onPress={() => this.handleLogout()}>
             <Text style={styles.buttonText}>Cerrar Sesión</Text>
           </TouchableOpacity>
